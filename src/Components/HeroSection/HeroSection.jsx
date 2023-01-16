@@ -1,8 +1,8 @@
 import React from "react";
 import Navbar from "./Navbar";
-import item from "../ImageResources/itemFruit.png";
-import tag from "../ImageResources/Tag.png";
-import preview from "../ImageResources/preview.png";
+import item from "../../ImageResources/itemFruit.png";
+import tag from "../../ImageResources/Tag.png";
+import preview from "../../ImageResources/preview.png";
 const HeroSection = () => {
   return (
     <div className="bg-center bg-cover sogo">

@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react'
-import Exclusive from '../Components/Exclusive'
-import Featured from '../Components/Featured'
+import React from 'react'
+import Exclusive from '../Components/ExclusiveSection/Exclusive'
+import Featured from '../Components/FeaturedSection/Featured'
 import FeaturedCasts from '../Components/FeaturedCasts'
 import Footer from '../Components/Footer'
-import HeroSection from '../Components/HeroSection'
-import NewArrival from '../Components/NewArrival'
+import HeroSection from '../Components/HeroSection/HeroSection'
+import NewArrival from '../Components/NewArrivalSection/NewArrival'
 
 
 const HomePage = () => {

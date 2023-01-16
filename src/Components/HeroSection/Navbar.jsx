@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FaBars, FaSearch } from "react-icons/fa";
-import Movix from "../ImageResources/tv.png"
-import { auth } from "../FirebaseConfig";
+import Movix from "../../ImageResources/tv.png"
+import { auth } from "../../FirebaseConfig";
 const Navbar = () => {
   const [user, setUser] = useState(null)
 

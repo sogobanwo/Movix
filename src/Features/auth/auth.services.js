@@ -28,9 +28,7 @@ export const registerUser = async (values) => {
 
     await setDoc(doc(db, "users", user.uid), formData);
 
-    if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
-    }
+   
     return user;
   } catch (error) {
     const toastError = error.message.split("/")[1];
@@ -47,7 +45,7 @@ export const LoginUser = async (values) => {
       password
     );
     const user = userCredential.user;
-    
+    return user;
   } catch (error) {
     const toastError = error.message.split("/")[1];
     toast.error(toastError);

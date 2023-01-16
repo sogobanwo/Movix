@@ -1,6 +1,6 @@
 import React from 'react'
-import hero from "../ImageResources/HeroImage.svg"
-import play from "../ImageResources/Play.png"
+import hero from "../../ImageResources/HeroImage.svg"
+import play from "../../ImageResources/Play.png"
 
 const ExclusiveVideo = () => {
   return (
