@@ -3,13 +3,16 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import john from "../ImageResources/Keanu-reaves.png";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
+import { SlickArrowLeft, SlickArrowRight } from "./Arrows";
 
 const FeaturedCasts = () => {
   var settings = {
     dots: false,
     infinite: true,
     speed: 500,
+    prevArrow: <SlickArrowLeft />,
+    nextArrow: <SlickArrowRight />,
     slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
@@ -52,8 +55,6 @@ const FeaturedCasts = () => {
         <Slider
           {...settings}
           className="mx-8"
-          prevArrow={<FaChevronLeft color="black" size={30} />}
-          nextArrow={<FaChevronRight color="black" size={30} />}
         >
           <div>
             <img

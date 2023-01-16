@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import ExclusiveVideo from './ExclusiveVideo';
-
+import { SlickArrowLeft, SlickArrowRight } from "./Arrows";
 
 const Exclusive = () => {
   const settings = {
@@ -12,6 +12,8 @@ const Exclusive = () => {
     dots: false,
     infinite: true,
     centerMode: false,
+    prevArrow: <SlickArrowLeft />,
+    nextArrow: <SlickArrowRight />,
     slidesToShow: 1,
     slidesToScroll: 1,
     variableWidth: true,
@@ -31,8 +33,6 @@ const Exclusive = () => {
         <Slider
           {...settings}
           className="mx-8"
-          prevArrow={<FaChevronLeft color="black" size={30} />}
-          nextArrow={<FaChevronRight color="black" size={30} />}
         >
          <ExclusiveVideo />
          <ExclusiveVideo />

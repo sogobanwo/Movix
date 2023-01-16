@@ -2,8 +2,9 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronRight } from "react-icons/fa";
 import MovieCard from "./MovieCard";
+import { SlickArrowLeft, SlickArrowRight } from "./Arrows";
 
 const Featured = () => {
   var settings = {
@@ -12,6 +13,8 @@ const Featured = () => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
+    prevArrow: <SlickArrowLeft />,
+    nextArrow: <SlickArrowRight />,
     initialSlide: 0,
     responsive: [
       {
@@ -57,8 +60,6 @@ const Featured = () => {
         <Slider
           {...settings}
           className="mx-8"
-          prevArrow={<FaChevronLeft color="black" size={30} />}
-          nextArrow={<FaChevronRight color="black" size={30} />}
         >
           <MovieCard />
           <MovieCard />
