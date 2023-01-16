@@ -1,12 +1,28 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {  FaChevronRight } from "react-icons/fa";
-import MovieCard from "./MovieCard";
+import MovieCardArrival from "./MovieCardArrival";
 import { SlickArrowLeft, SlickArrowRight } from "./Arrows";
+import {getLatestMovies} from '../Features/Movies/Movies.services'
+import { toast } from 'react-toastify';
 
 const NewArrival = () => {
+  const [movies, setMovies] = useState([])
+
+  useEffect(() => {
+    const res =async()=>{
+      try{
+      const movies = await getLatestMovies()
+      setMovies(movies)
+      }catch(error){
+        toast.error(error)
+      }
+    } 
+    res()
+  }, [])
+
   var settings = {
     dots: false,
     infinite: true,
@@ -61,14 +77,9 @@ const NewArrival = () => {
           {...settings}
           className="mx-8"
         >
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+          {movies.map((movies,index)=>{
+            return <MovieCardArrival key={index} {...movies}/>
+          })}
         </Slider>
       </div>
     </>

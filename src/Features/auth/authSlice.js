@@ -59,24 +59,24 @@ const authSlice = createSlice({
       .addCase(register.pending, (state)=>{
         state.isLoading = true
       })
-      .addCase(register.fulfilled, (state, action)=>{
+      .addCase(register.fulfilled, (state)=>{
         state.isLoading = false
         state.isSuccess = true
         
       })
-      .addCase(register.rejected, (state, action)=>{
+      .addCase(register.rejected, (state)=>{
         state.isLoading = false
         state.isError = true
       })
       .addCase(login.pending, (state)=>{
         state.isLoading = true
       })
-      .addCase(login.fulfilled, (state, action)=>{
+      .addCase(login.fulfilled, (state)=>{
         state.isLoading = false
         state.isSuccess = true
         
       })
-      .addCase(login.rejected, (state, action)=>{
+      .addCase(login.rejected, (state)=>{
         state.isLoading = false
         state.isError = true
       })

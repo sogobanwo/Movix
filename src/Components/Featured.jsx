@@ -1,12 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FaChevronRight } from "react-icons/fa";
 import MovieCard from "./MovieCard";
 import { SlickArrowLeft, SlickArrowRight } from "./Arrows";
+import { getFeaturedMovies } from "../Features/Movies/Movies.services";
+import { toast } from "react-toastify";
 
 const Featured = () => {
+  const [movies, setMovies] = useState([])
+
+  useEffect(() => {
+    const res =async()=>{
+      try{
+      const movies = await getFeaturedMovies()
+      setMovies(movies)
+      }catch(error){
+        toast.error(error)
+      }
+    } 
+    res()
+  }, [])
+
+
   var settings = {
     dots: false,
     infinite: true,
@@ -61,14 +78,10 @@ const Featured = () => {
           {...settings}
           className="mx-8"
         >
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
-          <MovieCard />
+          {movies.map((movie,index)=>{
+            return <MovieCard key={index} {...movie}/>
+          })}
+          
         </Slider>
       </div>
     </>

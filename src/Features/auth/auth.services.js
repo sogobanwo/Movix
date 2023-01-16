@@ -6,11 +6,10 @@ import {
 import { auth, db } from "../../FirebaseConfig";
 import { toast } from "react-toastify";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 
 export const registerUser = async (values) => {
   try {
-    const { email, password } = values;
+    const { email, password, fullname } = values;
     const userCredential = await createUserWithEmailAndPassword(
       auth,
       email,
@@ -19,9 +18,9 @@ export const registerUser = async (values) => {
 
     const user = userCredential.user;
 
-    // updateProfile(auth.currentUser, {
-    //   displayName: name,
-    // })
+    updateProfile(auth.currentUser, {
+      displayName: fullname,
+    })
 
     const formData = { ...values };
     delete formData.password;

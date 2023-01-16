@@ -26,6 +26,9 @@ const Register = () => {
     if (isError) {
       console.log(message);
     }
+    if(isSuccess) {
+      navigate("/")
+    }
 
     dispatch(reset());
   }, [isError, isSuccess, user, message, dispatch, navigate]);
