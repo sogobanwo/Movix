@@ -18,20 +18,20 @@ const Register = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user, isLoading, isError, message, isSuccess } = useSelector(
+  const { isLoading, isError, isSuccess, user } = useSelector(
     (state) => state.auth
   );
 
   useEffect(() => {
     if (isError) {
-      console.log(message);
+      console.log("Not LoggedIn");
     }
-    if(isSuccess) {
+    if(isSuccess || user ) {
       navigate("/")
     }
 
     dispatch(reset());
-  }, [isError, isSuccess, user, message, dispatch, navigate]);
+  }, [isError, isSuccess, user, dispatch, navigate]);
 
   if (isLoading) {
     return (

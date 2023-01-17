@@ -1,14 +1,15 @@
-import {
+import { getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { auth, db } from "../../FirebaseConfig";
+import { db } from "../../FirebaseConfig";
 import { toast } from "react-toastify";
 import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 export const registerUser = async (values) => {
   try {
+    const auth = getAuth() 
     const { email, password, fullname } = values;
     const userCredential = await createUserWithEmailAndPassword(
       auth,
@@ -32,12 +33,14 @@ export const registerUser = async (values) => {
     return user;
   } catch (error) {
     const toastError = error.message.split("/")[1];
-    toast.error(toastError);
+    const errorToShow = toastError.split(")")[0]
+    toast.error(errorToShow);
   }
 };
 
 export const LoginUser = async (values) => {
   try {
+    const auth = getAuth() 
     const { email, password } = values;
     const userCredential = await signInWithEmailAndPassword(
       auth,
@@ -45,9 +48,11 @@ export const LoginUser = async (values) => {
       password
     );
     const user = userCredential.user;
+    
     return user;
   } catch (error) {
     const toastError = error.message.split("/")[1];
-    toast.error(toastError);
+    const errorToShow = toastError.split(")")[0]
+    toast.error(errorToShow);
   }
 };

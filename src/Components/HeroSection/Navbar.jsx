@@ -2,11 +2,18 @@ import React, { useEffect, useState } from "react";
 import { FaBars, FaSearch } from "react-icons/fa";
 import Movix from "../../ImageResources/tv.png"
 import { auth } from "../../FirebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
+import { useSelector } from "react-redux";
 const Navbar = () => {
-  const [user, setUser] = useState(null)
-
+  const {user} = useSelector((state) => state.auth)
+  const [users, setUser] = useState(user)
+  
   useEffect(() => {
-    setUser(auth.currentUser) }, [])
+    onAuthStateChanged(auth, (currentUser)=>{
+      setUser(currentUser)
+    })
+     }, [])
+    //  setUser(auth.currentUser)
   
   return (
     <div className="pt-6 mx-[7.5%] flex justify-between items-center">
@@ -19,7 +26,7 @@ const Navbar = () => {
       <div className="relative left-[93%] -mt-7 mb-3"><FaSearch size={20} color={"lightgrey"}/></div>
       </div>
       <div className="flex space-x-4 items-center">
-        <h3 className="font-bold font-DMSans text-.5xl text-white md:text-2xl">{user ? `Hi, ${user.diasplayName}`: ""}</h3>
+        <h3 className="font-bold font-DMSans text-.5xl text-white md:text-2xl">{user ? `Hi, ${users.displayName.split(" ")[0]}`: ""}</h3>
         <div className="bg-darkRed text-white p-2 rounded-full">
         <FaBars size={20}/>
         </div>
