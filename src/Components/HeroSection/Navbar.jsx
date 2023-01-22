@@ -82,7 +82,7 @@ const Navbar = () => {
         await dispatch(logout());
         navigate("/Login");
       }}
-        className="fixed bg-darkRed text-white p-2 rounded-full cursor-pointer right-8 bottom-8 md:fixed"
+        className=" bg-darkRed text-white p-2 rounded-full cursor-pointer right-3 bottom-8  fixed z-10"
       >
        <FaSignOutAlt size={30} /> 
       </div>

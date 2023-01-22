@@ -61,8 +61,7 @@ const FeaturedCasts = () => {
               src={john}
               alt=""
               height={"370px"}
-              width={"250px"}
-              className="rounded-md"
+              className="rounded-md w-[100%] md:w-[250px]"
             />
             <h3 className="font-bold font-DMSans mt-2 ">Keanu Reave</h3>
           </div>
