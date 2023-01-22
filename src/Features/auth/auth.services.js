@@ -56,3 +56,15 @@ export const LoginUser = async (values) => {
     toast.error(errorToShow);
   }
 };
+
+export const LogoutUser = async() => {
+  try{
+    const auth = getAuth();
+    await auth.signOut()
+    localStorage.removeItem("user")
+  }catch(error){
+    const toastError = error.message.split("/")[1];
+    const errorToShow = toastError.split(")")[0]
+    toast.error(errorToShow);
+  }
+}

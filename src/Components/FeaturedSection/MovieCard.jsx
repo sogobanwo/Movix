@@ -11,8 +11,8 @@ const MovieCard = ({title, poster_path,genre_id, release_date, vote_average }) =
         src={`https://www.themoviedb.org/t/p/w220_and_h330_face/${poster_path}`}
         alt=""
         height={"370px"}
-        width={"250px"}
-        className="rounded-md"
+        
+        className="rounded-md w-[100%] md:w-[250px]"
       />
       <p className="mt-4 font-DMSans font-bold text-lightGrey">
         {release_date}

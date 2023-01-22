@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { registerUser, LoginUser } from "./auth.services";
+import { registerUser, LoginUser, LogoutUser } from "./auth.services";
 
 
 // Check if there is an existing user
@@ -35,6 +35,12 @@ export const login = createAsyncThunk("/auth/login", async (user, thunkAPI) => {
     return thunkAPI.rejectWithValue();
   }
 });
+
+// LogOut User
+export const logout = createAsyncThunk("/auth/logout" , async(user, thunkAPI)=>{
+  await LogoutUser()
+ })
+
 
 // SLICE
 const authSlice = createSlice({
@@ -72,6 +78,19 @@ const authSlice = createSlice({
         localStorage.setItem("user", JSON.stringify(action.payload));
       })
       .addCase(login.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(logout.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = null
+      
+      })
+      .addCase(logout.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });
